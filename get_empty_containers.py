@@ -10,6 +10,7 @@ BASE_URL = "https://192.168.5.128/rest"
 USER_NAME = "admin"
 PASSWORD = "password"
 DATEFORMAT = "%Y-%m-%d"
+NO_OF_DAYS = 7
 
 
 def rest_call(endpoint, include_expensive=True, page_size=0, **params):
@@ -75,7 +76,7 @@ def get_containers_without_artifacts(container_id_list, cef_key_list, params=dic
     return containers_without_artifacts_id_list
 
 
-containers_with_artifacts, all_containers = get_containers(7)
+containers_with_artifacts, all_containers = get_containers(NO_OF_DAYS)
 container_id_list = [x.get("id") for x in all_containers]
 print(f"container_id_list: {container_id_list}")
 containers_without_attachments_id_list = get_containers_without_attachments(container_id_list)
