@@ -11,7 +11,7 @@ USER_NAME = "admin"
 PASSWORD = "password"
 DATEFORMAT = "%Y-%m-%d"
 NO_OF_DAYS = 7
-
+CEF_KEY_LIST = ["destinationDnsDomain", "requestURL", "sourceDnsDomain"]
 
 def rest_call(endpoint, include_expensive=True, page_size=0, **params):
     url = f"{BASE_URL}/{endpoint}"
@@ -81,8 +81,8 @@ container_id_list = [x.get("id") for x in all_containers]
 print(f"container_id_list: {container_id_list}")
 containers_without_attachments_id_list = get_containers_without_attachments(container_id_list)
 print(f"containers_without_attachments_id_list: {containers_without_attachments_id_list}")
-cef_key_list = ["destinationDnsDomain", "requestURL", "sourceDnsDomain"]
-containers_without_artifacts_id_list = get_containers_without_artifacts(container_id_list, cef_key_list)
+
+containers_without_artifacts_id_list = get_containers_without_artifacts(container_id_list, CEF_KEY_LIST)
 print(f"containers_without_artifacts_id_list: {containers_without_artifacts_id_list}")
 empty_container_list = list(
     set(containers_without_attachments_id_list).intersection(set(containers_without_artifacts_id_list)))
