@@ -13,6 +13,7 @@ DATEFORMAT = "%Y-%m-%d"
 NO_OF_DAYS = 7
 CEF_KEY_LIST = ["destinationDnsDomain", "requestURL", "sourceDnsDomain"]
 
+
 def rest_call(endpoint, include_expensive=True, page_size=0, **params):
     url = f"{BASE_URL}/{endpoint}"
 
