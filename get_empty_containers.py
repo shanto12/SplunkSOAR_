@@ -12,6 +12,7 @@ PASSWORD = "password"
 DATEFORMAT = "%Y-%m-%d"
 NO_OF_DAYS = 7
 CEF_KEY_LIST = ["destinationDnsDomain", "requestURL", "sourceDnsDomain"]
+CONTAINER_LABEL = "phishing"
 
 
 def rest_call(endpoint, include_expensive=True, page_size=0, **params):
@@ -33,6 +34,7 @@ def get_containers(age, params=dict()):
     date_week_ago = (datetime.today() - timedelta(days=age)).date().strftime(DATEFORMAT)
 
     params["_filter_create_time__gte"] = f'"{date_week_ago}"'
+    params["_filter_label"] = f'"{CONTAINER_LABEL}"'
 
     r_json = rest_call("container", **params)
 
